@@ -1,27 +1,33 @@
 import Image from "next/image";
+import InputBlock from "./inputblock/inputblock";
+import Card from "@/app/assets/ui/card";
+
+const userCardStyle = { bgColor: "#838b99", txColor: "#ffffff", };
+const botCardStyle = { bgColor: "#1f315c", txColor: "#ffffff", };
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Image
-        src="/imgs/hero.png"
-        alt="PollyGlot Logo"
-        width={300}
-        height={300}
-      />
-      {/* Tailwind class for red background  */}
-      <div className="flex flex-col items-center message-area bg-red-500">
-        Message Area
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      {/* Top image */}
+      <div className="flex w-full" style={{ backgroundColor: "#0c182e" }}>
+        <Image
+          src="/imgs/hero.png"
+          alt="PollyGlot Logo"
+          width={780}
+          height={426}
+          className=""
+        />
       </div>
-      <div className="flex flex-col items-center input-area bg-green-500">
-        Input Area
+
+      <div className="flex flex-col items-center text-black bg-white rounded-lg p-2 w-11/12 h-60">
+        {/* <Card msg="How are you?" bgColor="#838b99" txColor="#ffffff" /> */}
+        <Card msg="How are you?" {...userCardStyle} />
+        <Card msg="Como está você?" {...botCardStyle} />
       </div>
-      <div className="flex items-center input-area bg-blue-500" style={{width: '300px'}} >
-        <div className="flag-container mx-1"><Image alt="Flag of Brasil" src="/imgs/brasil-flag.png" width={100} height={67}/></div>
-        <div className="flag-container mx-1"><Image alt="Flag of France" src="/imgs/france-flag.png" width={100} height={67}/></div>
-        <div className="flag-container mx-1"><Image alt="Flag of Japan" src="/imgs/japan-flag.png" width={100} height={67}/></div>
-        <div className="flag-container mx-1"><Image alt="Flag of Spain" src="/imgs/spain-flag.png" width={100} height={67}/></div>
-      </div>
+
+      {/* Input area */}
+      <InputBlock />
     </main>
   );
 }
