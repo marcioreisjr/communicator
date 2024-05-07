@@ -1,11 +1,11 @@
-'use client';
 import LangSel from '@/app/assets/ui/langsel';
 import { useFormState } from 'react-dom';
 import { translateSrv } from '@/app/lib/actions';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { MsgTranslation } from '@/app/lib/definitions';
 
 
-export default function InputBlock(translationResult: string | undefined | null) {
+export default function InputBlock({msgList, setMsgList}: {msgList: MsgTranslation[], setMsgList: Function}) {
   const langItems = [
     { language: 'pt', src: '/imgs/brasil-flag.png', alt: 'Flag of Brazil' },
     { language: 'fr', src: '/imgs/france-flag.png', alt: 'Flag of France' },
@@ -14,11 +14,12 @@ export default function InputBlock(translationResult: string | undefined | null)
   ];
   const attrs = { width: 100, height: 67 };
   const [transResult, formAction] = useFormState(translateSrv, null);
-  // const [transResult, setTransResult] = useState("");
 
   useEffect(() => {
+    console.log("in useEffect");
     console.log(transResult);
-    translationResult = transResult;
+    if (transResult === null) return;
+    setMsgList([...msgList, transResult]);
   }, [transResult]);
 
   return (

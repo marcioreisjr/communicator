@@ -1,7 +1,9 @@
 
 
+import { MsgTranslation } from './definitions';
+
 export async function translateSrv(
-    previousState: string | undefined | null,
+    previousState: MsgTranslation | null,
     formData: FormData) {
     //the previousState variable contains the last recorded value of the user's input
     console.log("previous recorded state: '", previousState, "'");
@@ -9,6 +11,6 @@ export async function translateSrv(
     const msg = formData.get("msgInput");
     const lang = formData.get("langSel");
 
-    return "Final translation of " + msg + " to " + lang + " language.";
+    return { msg: msg, lang: lang, translation: `'${msg}' will be translated to '${lang}'` };
 
 }
