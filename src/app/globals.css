@@ -26,3 +26,13 @@ body {
     text-wrap: balance;
   }
 }
+
+.userCard {
+  background-color: #838b99;
+  color: #ffffff;
+}
+
+.aiCard {
+  background-color: #1f315c;
+  color: #ffffff;
+}
