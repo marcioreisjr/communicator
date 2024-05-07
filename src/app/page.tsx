@@ -14,7 +14,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between">
       {/* Top image */}
       <div className="flex w-full mb-1 justify-center" style={{ backgroundColor: "#0c182e" }}>
-        <Image src="/imgs/hero.png" alt="PollyGlot Logo" width={400} height={0} />
+        <Image src="/imgs/hero.png" alt="PollyGlot Logo" width={400} height={0} priority={true} />
       </div>
       {/* Message area */}
       <div className="flex flex-col items-center text-black rounded-lg p-2 h-2/4 w-full">

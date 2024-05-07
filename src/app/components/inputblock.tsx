@@ -7,17 +7,16 @@ import { MsgTranslation } from '@/app/lib/definitions';
 
 export default function InputBlock({msgList, setMsgList}: {msgList: MsgTranslation[], setMsgList: Function}) {
   const langItems = [
-    { language: 'pt', src: '/imgs/brasil-flag.png', alt: 'Flag of Brazil' },
-    { language: 'fr', src: '/imgs/france-flag.png', alt: 'Flag of France' },
-    { language: 'jp', src: '/imgs/japan-flag.png', alt: 'Flag of Japan' },
-    { language: 'sp', src: '/imgs/spain-flag.png', alt: 'Flag of Spain' }
+    { language: 'portuguese', src: '/imgs/brasil-flag.png', alt: 'Flag of Brazil' },
+    { language: 'french', src: '/imgs/france-flag.png', alt: 'Flag of France' },
+    { language: 'japanese', src: '/imgs/japan-flag.png', alt: 'Flag of Japan' },
+    { language: 'spanish', src: '/imgs/spain-flag.png', alt: 'Flag of Spain' },
+    { language: 'english', src: '/imgs/usa-flag.png', alt: 'Flag of USA' },
   ];
   const attrs = { width: 100, height: 67 };
   const [transResult, formAction] = useFormState(translateSrv, null);
 
   useEffect(() => {
-    console.log("in useEffect");
-    console.log(transResult);
     if (transResult === null) return;
     setMsgList([...msgList, transResult]);
   }, [transResult]);

@@ -1,16 +1,51 @@
-
-
+'use server';
 import { MsgTranslation } from './definitions';
+import OpenAI from 'openai'
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 export async function translateSrv(
     previousState: MsgTranslation | null,
     formData: FormData) {
-    //the previousState variable contains the last recorded value of the user's input
-    console.log("previous recorded state: '", previousState, "'");
-    //use the formData variable to get values:
-    const msg = formData.get("msgInput");
-    const lang = formData.get("langSel");
+    const msg = formData.get("msgInput")?.toString();
+    const lang = formData.get("langSel")?.toString();
+    if (!msg || !lang) {
+        return { msg: msg, lang: lang, translation: 'Please provide a message and a language' };
+    }
+    const translation = await fetchTranslation(msg, lang);
+    const resp = { msg: msg, lang: lang, translation: translation };
+    return resp;
+}
 
-    return { msg: msg, lang: lang, translation: `'${msg}' will be translated to '${lang}'` };
+async function fetchTranslation(msg: string, lang: string): Promise<string> {
+    const apiKey = OPENAI_API_KEY;
+    const openai = new OpenAI({
+        apiKey: apiKey,
+        dangerouslyAllowBrowser: true,
+    });
 
+    const userContent = `Provide a translation to ${lang} for the message
+    between quotation marks. If the message is already in ${lang}, just repeat
+    the message. Provide purely the translated phrase, without adding any extra
+    elements, such as quotation marks, if they where not in the original message.
+    Message: "${msg}"`;
+
+    const messages = [
+        {
+            role: 'system',
+            content: 'You are a polyglot expert translator.',
+        },
+        {
+            role: 'user',
+            content: userContent,
+        },
+    ];
+
+    const response = await openai.chat.completions.create({
+        model: 'gpt-3.5-turbo',
+        messages: messages,
+        max_tokens: 10,
+    });
+    let translation = response.choices[0].message.content;
+    return translation || 'No translation found';
 }
