@@ -1,19 +1,33 @@
 'use client';
-import React from 'react';
-import LangSel from '../assets/ui/langsel';
+import LangSel from '@/app/assets/ui/langsel';
+import { useFormState } from 'react-dom';
+import { translateSrv } from '@/app/lib/actions';
+import React, { useEffect, useState } from 'react';
 
 
-export default function InputBlock() {
-  const langItems = [{ language: 'brasil', src: '/imgs/brasil-flag.png', alt: 'Flag of Brasil' }, { language: 'france', src: '/imgs/france-flag.png', alt: 'Flag of France' }, { language: 'japan', src: '/imgs/japan-flag.png', alt: 'Flag of Japan' }, { language: 'spain', src: '/imgs/spain-flag.png', alt: 'Flag of Spain' }];
+export default function InputBlock(translationResult: string | undefined | null) {
+  const langItems = [
+    { language: 'pt', src: '/imgs/brasil-flag.png', alt: 'Flag of Brazil' },
+    { language: 'fr', src: '/imgs/france-flag.png', alt: 'Flag of France' },
+    { language: 'jp', src: '/imgs/japan-flag.png', alt: 'Flag of Japan' },
+    { language: 'sp', src: '/imgs/spain-flag.png', alt: 'Flag of Spain' }
+  ];
   const attrs = { width: 100, height: 67 };
+  const [transResult, formAction] = useFormState(translateSrv, null);
+  // const [transResult, setTransResult] = useState("");
+
+  useEffect(() => {
+    console.log(transResult);
+    translationResult = transResult;
+  }, [transResult]);
 
   return (
     <div className='flex flex-col items-center text-black rounded-lg p-2 w-full my-1'>
-      <form className='flex flex-col '>
+      <form action={formAction} className='flex flex-col '>
         {/* Text input to translate */}
         <div className="flex flex-row items-center input-area mb-2 w-full border-5 rounded border-gray-500">
-          <input type="text" id="msg-input" placeholder=" Your text here..." className='w-full mr-2' />
-          <button className="add-ticker-btn">
+          <input type="text" id="msg-input" name="msgInput" placeholder=" Your text here..." className='w-full mr-2' />
+          <button className="add-ticker-btn" type='submit'>
             <img src="imgs/arrow-btn.png" className="add-ticker-svg h-7" alt="add" />
           </button>
         </div>

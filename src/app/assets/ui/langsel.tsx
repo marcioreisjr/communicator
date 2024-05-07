@@ -23,7 +23,7 @@ export default function LangSel(
           <label htmlFor={`lang-${item.language}`} onClick={() => setLangSel(item.language)} className='mb-1'>
             <Image src={item.src} alt={item.alt} width={attrs.width} height={attrs.height} className='rounded-lg'/>
           </label>
-          <input type="radio" id={`lang-${item.language}`} name="lang-sel" value={item.language} checked={langSel === item.language} className='appearance-none rounded-sm w-3/4 border-2 border-solid border-gray-400 checked:border-blue-600'/>
+          <input onChange={() => setLangSel(item.language)} type="radio" id={`lang-${item.language}`} name="langSel" value={item.language} checked={langSel === item.language} className='appearance-none rounded-sm w-3/4 border-2 border-solid border-gray-400 checked:border-blue-600'/>
         </div>
       ))}
     </div>
