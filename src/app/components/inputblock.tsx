@@ -1,4 +1,4 @@
-import LangSel from '@/app/assets/ui/langsel';
+import LangSel from '@/app/assets/ui/langSel';
 import { useFormState } from 'react-dom';
 import { translateSrv } from '@/app/lib/actions';
 import React, { useEffect } from 'react';
@@ -22,13 +22,13 @@ export default function InputBlock({msgList, setMsgList}: {msgList: MsgTranslati
   }, [transResult]);
 
   return (
-    <div className='flex flex-col items-center text-black rounded-lg p-2 w-full my-1'>
+    <div className="flex flex-col items-center text-black2 my-1 mb-2 w-full">
       <form action={formAction} className='flex flex-col '>
         {/* Text input to translate */}
-        <div className="flex flex-row items-center input-area mb-2 w-full border-5 rounded border-gray-500">
-          <input type="text" id="msg-input" name="msgInput" placeholder=" Your text here..." className='w-full mr-2' />
+        <div className="flex flex-row items-center input-area mb-2 w-full border border-gray-400 text-black rounded-lg p-0.5 bg-white">
+          <input type="text" id="msg-input" name="msgInput" placeholder=" Your text here..." className='w-full mr-2 bg-transparent' />
           <button className="add-ticker-btn" type='submit'>
-            <img src="imgs/arrow-btn.png" className="add-ticker-svg h-7" alt="add" />
+            <img src="imgs/arrow-btn.png" className="add-ticker-svg h-6" alt="add" />
           </button>
         </div>
         {/* Language selection */}

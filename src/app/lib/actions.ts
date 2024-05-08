@@ -5,7 +5,7 @@ import OpenAI from 'openai'
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 export async function translateSrv(
-    previousState: MsgTranslation | null,
+    previousState: any | null,
     formData: FormData) {
     const msg = formData.get("msgInput")?.toString();
     const lang = formData.get("langSel")?.toString();
@@ -30,7 +30,7 @@ async function fetchTranslation(msg: string, lang: string): Promise<string> {
     elements, such as quotation marks, if they where not in the original message.
     Message: "${msg}"`;
 
-    const messages = [
+    const messages: any = [
         {
             role: 'system',
             content: 'You are a polyglot expert translator.',
@@ -40,7 +40,6 @@ async function fetchTranslation(msg: string, lang: string): Promise<string> {
             content: userContent,
         },
     ];
-
     const response = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
         messages: messages,

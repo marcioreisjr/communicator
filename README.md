@@ -5,7 +5,15 @@ selected languages. The project uses the OpenAI's LLM GPT models to perform
 the translations.
 
 ## Installation
-TODO: Add installation instructions
+1. Clone the repository
+2. Install the required dependencies using the following command:
+```bash
+npm install
+```
+3. Start the development server using the following command:
+```bash
+npm run dev
+```
 
 ## Usage
 To use the translator:
