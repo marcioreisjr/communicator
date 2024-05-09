@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PollyGlot - A translation app",
-  description: "Always the perfect translation",
+  title: "Communicator",
+  description: "An AI-powered translator",
 };
 
 export default function RootLayout({
