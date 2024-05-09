@@ -45,10 +45,10 @@ async function fetchTranslation(msg: string, lang: string): Promise<string> {
         },
     ];
     const response = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        // model: 'gpt-4',
+        // model: 'gpt-3.5-turbo',
+        model: 'gpt-4',
         messages: messages,
-        max_tokens: 15,
+        max_tokens: 20,
     });
     let translation = response.choices[0].message.content;
     return translation || 'No translation found';
