@@ -1,4 +1,4 @@
-import LangSel from '@/app/assets/ui/langSel';
+import LangSel from '@/app/assets/ui/langsel';
 import { useFormState } from 'react-dom';
 import { translateSrv } from '@/app/lib/actions';
 import React, { useEffect, useRef } from 'react';

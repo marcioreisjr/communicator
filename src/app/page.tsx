@@ -4,7 +4,7 @@ import Card from "@/app/assets/ui/card";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { MsgTranslation } from "@/app/lib/definitions";
-import InputBlock from "@/app/components/inputBlock";
+import InputBlock from "@/app/components/inputblock";
 
 export default function Home() {
   const emptyMsg: MsgTranslation[] = [];
