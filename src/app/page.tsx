@@ -22,6 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     scrollToBottom();
+    // eslint-disable-next-line
   }, [msgList]);
 
   return (
