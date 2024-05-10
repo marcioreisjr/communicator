@@ -36,3 +36,12 @@ body {
   background-color: #1f315c;
   color: #ffffff;
 }
+
+.qrBg {
+  /* Add a background image (QR Code) located at /imgs/qr-code.png */
+  /* Set it size to cover 50% the height of the containing element */
+  background-image: url('/imgs/qr-code.png');
+  background-size: auto 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

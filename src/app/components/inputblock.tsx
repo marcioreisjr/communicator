@@ -50,7 +50,8 @@ export default function InputBlock({ msgList, setMsgList }: { msgList: MsgTransl
       }} className='flex flex-col w-10/12 items-center'>
         {/* Text input to translate */}
         <div className="flex flex-row items-center input-area mb-2 w-full border border-gray-400 text-black rounded-lg p-0.5 bg-white">
-          <input type="text" id="msg-input" name="msgInput" placeholder=" Your text here..." className='w-full h-10 mr-2 bg-transparent' />
+          <input type="text" id="msg-input" name="msgInput"
+            placeholder="Text to translate here..." className='w-full h-10 mr-2 bg-transparent' />
           <button className="add-ticker-btn" type='submit' ref={realBtn}>
             <Image src="/imgs/arrow-btn.png" ref={arrowBtn} className="mr-2" width={24} height={24} alt="enter" />
             <Image src="/imgs/loader.svg" ref={loaderBtn} className="hidden mr-2" width={24} height={24} alt="loading" />

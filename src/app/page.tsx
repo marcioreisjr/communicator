@@ -9,18 +9,20 @@ import InputBlock from "@/app/components/inputblock";
 export default function Home() {
   const emptyMsg: MsgTranslation[] = [];
   const [msgList, setMsgList] = useState(emptyMsg);
+  const [showQR, setShowQR] = useState(0);
   const scrollableRef = useRef(null);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [msgList]);
 
   const scrollToBottom = () => {
     if (scrollableRef.current) {
       const htmlDiv: HTMLDivElement = scrollableRef.current;
       htmlDiv.scrollTop = htmlDiv.scrollHeight;
+      setShowQR(showQR + 1);
     }
   };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [msgList]);
 
   return (
     <main className="flex flex-col h-screen">
@@ -32,8 +34,8 @@ export default function Home() {
       </div>
 
       {/* Message area */}
-      <div className="med flex w-full h-full flex-col items-center text-black
-      rounded-lg flex-2 overflow-y-auto">
+      <div className={`med flex w-full h-full flex-col items-center text-black
+      rounded-lg flex-2 overflow-y-auto ${showQR > 1 ? "" : "qrBg"}`} >
         <div ref={scrollableRef} className="scrollable w-full h-full overflow-y-auto">
           {msgList.length !== 0 ? msgList.map((msg, index) => (
             <React.Fragment key={index}>
