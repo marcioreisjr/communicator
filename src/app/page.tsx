@@ -29,9 +29,19 @@ export default function Home() {
     <main className="flex flex-col h-screen">
       {/* Top image */}
       <div className="flex mb-1 w-full justify-center h-1/4" style={{ backgroundColor: "#0c182e" }}>
-        {/* eslint-disable-next-line */}
-        <img src="/imgs/hero.png" alt="Communicator Logo" className="" />
-        {/* width="400px" */}
+        <div className="flex w-4/12">
+          <div className="flex justify-center">
+            {/* eslint-disable-next-line */}
+            <img src="/imgs/couple.png" alt="Communicator Logo" className="" />
+          </div>
+        </div>
+        <div className="flex flex-col w-8/12 justify-center items-center">
+          <div className="flex w-10/12">
+            {/* eslint-disable-next-line */}
+            <img src="/imgs/communicator.png" alt="Communicator" />
+          </div>
+          <p className="app-subtitle">AI-Powered Translator</p>
+        </div>
       </div>
 
       {/* Message area */}

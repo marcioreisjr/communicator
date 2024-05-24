@@ -45,3 +45,10 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.app-title {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #f4cc55;
+}
