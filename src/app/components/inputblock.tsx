@@ -38,6 +38,9 @@ export default function InputBlock({ msgList, setMsgList }: { msgList: MsgTransl
     setBtnEnabled(realBtn, true);
     setBtnImg(loaderBtn, "none");
     setBtnImg(arrowBtn, "block");
+    /* reset form */
+    const msgInput = document.getElementById('msg-input') as HTMLInputElement;
+    msgInput.value = '';
     // eslint-disable-next-line
   }, [transResult]);
 
@@ -53,7 +56,7 @@ export default function InputBlock({ msgList, setMsgList }: { msgList: MsgTransl
           <input type="text" id="msg-input" name="msgInput"
             placeholder="Text to translate here..." className='w-full h-10 mr-2 bg-transparent' />
           <button className="add-ticker-btn" type='submit' ref={realBtn}>
-            <Image src="/imgs/arrow-btn.png" ref={arrowBtn} className="mr-2" width={24} height={24} alt="enter" />
+            <Image src="/imgs/arrow-gray-btn.png" ref={arrowBtn} className="mr-2" width={24} height={24} alt="enter" />
             <Image src="/imgs/loader.svg" ref={loaderBtn} className="hidden mr-2" width={24} height={24} alt="loading" />
           </button>
         </div>
