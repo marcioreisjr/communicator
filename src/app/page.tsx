@@ -62,7 +62,7 @@ export default function Home() {
       <div className="flex-1 bottom-0 relative">
         <InputBlock msgList={msgList} setMsgList={setMsgList} />
         <div className="flex justify-between">
-          <span className="text-gray-400 text-xs ml-2">Ver. 1.0</span>
+          <span className="text-gray-400 text-xs ml-2">Ver. 1.1</span>
           <span className="text-gray-400 text-xs mr-2">Design 2024, by Márcio Reis Jr.</span>
         </div>
       </div>
