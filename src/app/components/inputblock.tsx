@@ -1,7 +1,6 @@
 import LangSel from '@/app/assets/ui/langsel';
-import { useFormState } from 'react-dom';
 import { translateSrv } from '@/app/lib/actions';
-import React, { useEffect, useRef } from 'react';
+import React, { useActionState, useEffect, useRef } from 'react';
 import { MsgTranslation } from '@/app/lib/definitions';
 import Image from 'next/image';
 
@@ -15,7 +14,7 @@ export default function InputBlock({ msgList, setMsgList }: { msgList: MsgTransl
     { language: 'english', src: '/imgs/usa-flag.png', alt: 'Flag of USA' },
   ];
   const attrs = { width: 100, height: 67 };
-  const [transResult, formAction] = useFormState(translateSrv, null);
+  const [transResult, formAction] = useActionState(translateSrv, null);
   const arrowBtn = useRef(null);
   const loaderBtn = useRef(null);
   const realBtn = useRef(null);
